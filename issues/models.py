@@ -2,21 +2,21 @@ from django.db import models
 
 # Create your models here.
 
-class Issue(model.Model): 
+class Issue(models.Model): 
 	publish_date=models.DateField('date submitted')
 	title = models.CharField(max_length=200)
-	color = models.CharField(max_length=7,min_length=7)
+	color = models.CharField(max_length=7)
 
 
-class Author(model.Model): 
+class Author(models.Model): 
 	name = models.CharField(max_length=50)
 	bio = models.TextField()
-	website = models.UrlField(null=True)
-	twitter = models.UrlField(null=True)
-	instagram = models.UrlField(null=True)
-	facebook = models.UrlField(null=True)
+	website = models.URLField(null=True)
+	twitter = models.URLField(null=True)
+	instagram = models.URLField(null=True)
+	facebook = models.URLField(null=True)
 
-class Piece(model.Model): 
+class Piece(models.Model): 
 	issue = models.ForeignKey(Issue, on_delete=models.CASCADE)
 	position = models.IntegerField()
 	text = models.TextField() 
