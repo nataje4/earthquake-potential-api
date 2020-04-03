@@ -1,6 +1,9 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from submissions.forms import SubmissionForm
+from submissions.models import Submission  
+from rest_framework import viewsets
+from submissions.serializers import SubmissionSerializer
 
 
 from django.template import loader
@@ -26,3 +29,11 @@ def index(request):
     context = {'form': form}
 
     return HttpResponse(template.render(context, request))
+
+
+class SubmissionViewSet(viewsets.ModelViewSet):
+    """
+    API endpoint that allows users to be viewed or edited.
+    """
+    queryset = Submission.objects.all()
+    serializer_class = SubmissionSerializer
