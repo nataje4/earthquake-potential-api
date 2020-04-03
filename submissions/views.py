@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
 from submissions.forms import SubmissionForm
 from submissions.models import Submission  
 from rest_framework import viewsets
@@ -31,9 +31,16 @@ def index(request):
     return HttpResponse(template.render(context, request))
 
 
-class SubmissionViewSet(viewsets.ModelViewSet):
-    """
-    API endpoint that allows users to be viewed or edited.
-    """
-    queryset = Submission.objects.all()
-    serializer_class = SubmissionSerializer
+
+def post_submission(request): 
+    if request.method == 'POST': 
+        data = JSONParser().parse(request)
+        serializer = SnippetSerializer(data=data)
+        if serializer.is_valid():
+            serializer.save()
+            return JsonResponse(serializer.data, status=201)
+        return JsonResponse(serializer.errors, status=400)
+
+        print('you\'ve posted')
+    else: 
+        return HttpResponse("this endpoint only responds to POST requests")

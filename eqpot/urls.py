@@ -18,6 +18,6 @@ from django.urls import path, include
 
 urlpatterns = [
 	path('submit/', include('submissions.urls'), ),
-	path('api/', include('rest_framework.urls', namespace='rest_framework')),
+	path('issues/', include('issues.urls'),
     path('admin/', admin.site.urls),
 ]
