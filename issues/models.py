@@ -32,5 +32,20 @@ class Piece(models.Model):
 	layout_type = models.CharField(max_length=20)
 	# custom_css = models.CharField(max_length=200)
 
+	def to_dict(self): 
+		data = {}
+
+		data['author'] = self.author.name
+		data['position'] = self.position
+		data['title'] = self.title
+		data['text'] = self.text
+		# data['media_file'] = self.media_file
+		data['layout_type'] = self.layout_type
+
+		return data
+
+
+
+
 	def __str__(self):
 		return self.title
