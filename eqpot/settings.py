@@ -12,10 +12,15 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 
 import os
 
-from .settings_local import *
+
+
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+
+if os.path.exists(os.path.join(BASE_DIR, "eqpot", "settings_local.py")):
+    from .settings_local import *
 
 
 
