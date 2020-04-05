@@ -12,20 +12,24 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 
 import os
 
+from .settings_local import *
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
 
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'jdul2021)9pkaedg#sbl3&t81)8^u9o%^ggm8s@cxoloj$1445'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 
 # NOTE: In DEV enviorment you need vivi/myenvars.py containing PRODUCTION = False
-PRODUCTION =os.getenv("PRODUCTION")
+
+## need to add PRODUCTION and SECRET KEY environment variables in PRODUCTION 
+
 
 DEBUG = not PRODUCTION
 
@@ -127,3 +131,5 @@ STATIC_URL = '/static/'
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+
