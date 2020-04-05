@@ -26,6 +26,7 @@ if os.path.exists(os.path.join(BASE_DIR, "eqpot", "settings_local.py")):
 else: 
     SECRET_KEY = os.getenv("SECRET_KEY")
     PRODUCTION = os.getenv("PRODUCTION")
+    DATABASE_KEY = os.getenv("DATABASE_KEY")
 
 
 
@@ -94,8 +95,15 @@ WSGI_APPLICATION = 'eqpot.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
 
-DATABASES = {}
-DATABASES['default'] = dj_database_url.config(conn_max_age=600)
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': 'mydatabase',
+    }
+}
+
+DATABASES['production'] = dj_database_url.config(conn_max_age=600)
+
 
 # Password validation
 # https://docs.djangoproject.com/en/2.1/ref/settings/#auth-password-validators
