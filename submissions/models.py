@@ -17,3 +17,11 @@ class Submission(models.Model):
 	submission_file = models.FileField(upload_to='uploads/%Y/%m/')
 	editor_notes = models.TextField(blank=True, null=True)
 	submission_status = models.CharField(max_length=10,choices=SUBMISSION_STATUS, default='Recieved')
+
+	# if this is a new submission, send me an email
+	'''
+	def save(self, *args, **kwargs):
+    if not self.pk:
+
+    super(MyModel, self).save(*args, **kwargs)
+    '''

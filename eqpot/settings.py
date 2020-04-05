@@ -23,7 +23,11 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'jdul2021)9pkaedg#sbl3&t81)8^u9o%^ggm8s@cxoloj$1445'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+
+# NOTE: In DEV enviorment you need vivi/myenvars.py containing PRODUCTION = False
+PRODUCTION =os.getenv("PRODUCTION")
+
+DEBUG = not PRODUCTION
 
 ALLOWED_HOSTS = []
 
