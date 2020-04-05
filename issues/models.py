@@ -18,6 +18,7 @@ class Author(models.Model):
 
 class Piece(models.Model): 
 	issue = models.ForeignKey(Issue, on_delete=models.CASCADE)
+	author = models.ForeignKey(Author, on_delete=models.CASCADE)
 	position = models.IntegerField()
 	text = models.TextField() 
 	media_file = models.FileField(upload_to='issue_media/%Y/%m/')
