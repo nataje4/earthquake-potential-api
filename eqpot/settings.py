@@ -21,7 +21,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 if os.path.exists(os.path.join(BASE_DIR, "eqpot", "settings_local.py")):
     from .settings_local import *
-
+else: 
+    SECRET_KEY = os.getenv("SECRET_KEY")
+    PRODUCTION = os.getenv("PRODUCTION")
 
 
 # Quick-start development settings - unsuitable for production
