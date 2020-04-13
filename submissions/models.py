@@ -14,7 +14,7 @@ class Submission(models.Model):
 	author_name = models.CharField(max_length=200)
 	author_email = models.EmailField()
 	cover_letter = models.TextField()
-	submission_file = models.FileField(upload_to='uploads/%Y/%m/')
+	submission_file = models.FileField(upload_to='uploads/%Y/%m/', null=True)
 	editor_notes = models.TextField(blank=True, null=True)
 	submission_status = models.CharField(max_length=10,choices=SUBMISSION_STATUS, default='Recieved')
 

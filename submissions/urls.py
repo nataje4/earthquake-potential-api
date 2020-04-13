@@ -1,8 +1,13 @@
 from django.urls import path
+from django.conf.urls import url, include
+from rest_framework.routers import SimpleRouter
+from submissions import api
 
-from . import views
+
+router = SimpleRouter()
+router.register(r'submit', api.SubmissionViewSet)
+
 
 urlpatterns = [
-    path('', views.index, name='index'),
-    path('post', views.post_submission, name='post_endpoint')
+	url(r'^api/', include(router.urls))
 ]
