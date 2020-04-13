@@ -11,5 +11,5 @@ router.register(r'piece', api.PieceViewSet)
 
 urlpatterns = [
 	url(r'^api/', include(router.urls)), 
-	url(r'^info/(?P<pk>\d+)/$', views.full_issue_info, name='full_issue_info')
+	url(r'^info/(?P<pk>\d+)/$', api.full_issue_info, name='full_issue_info')
 	]
